@@ -9,9 +9,10 @@
     "@angular-devkit/core" "7.0.7"
     rxjs "6.3.3"
 
-"@angular-devkit/build-angular@~0.10.0":
+"@angular-devkit/build-angular@^0.10.7":
   version "0.10.7"
   resolved "https://registry.yarnpkg.com/@angular-devkit/build-angular/-/build-angular-0.10.7.tgz#facfde114c25a4ca3cc5eb6178052a454e597c4c"
+  integrity sha512-wjhlMWWkGSSkdwd9elKfeeEgyig/eZGyF2wY5kZmWPBdeK/GfdBLyO15qh4ppRYI2SjyRvzl0tWDOA2Y0hKL0w==
   dependencies:
     "@angular-devkit/architect" "0.10.7"
     "@angular-devkit/build-optimizer" "0.10.7"

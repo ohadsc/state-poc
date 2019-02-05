@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Store, select } from '@ngrx/store';
 //import { Observable } from 'rxjs';
-import { Increment, Decrement, Reset } from './state/counter.actions';
+import { Increment, Decrement, Reset, Update } from './state/counter.actions';
 import { CounterState } from './state/counter.state';
 
 @Component({
@@ -34,5 +34,10 @@ export class CounterComponent implements OnInit {
 
   reset() {
     this.store.dispatch(new Reset());
+  }
+
+  update(value: number) {
+    debugger;
+    this.store.dispatch(new Update({num: value}));
   }
 }

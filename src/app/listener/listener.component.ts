@@ -16,7 +16,6 @@ export class ListenerComponent implements OnInit {
   constructor(private store: Store<CounterState>) {
     //this.count$ = store.pipe(select('count'));
     const storeSubscriberOne = store.select('count').subscribe(state => {
-      debugger;
       this.count = state.num
     });
   }
