@@ -17,9 +17,9 @@ export function counterReducer(state = initialState, action: Action) {
       return Object.assign({}, state, { num: 0 });
 
     case ActionTypes.Update:
-      let updateAction = action as Update;
-      console.log(updateAction);
-      return Object.assign({}, state, { num: updateAction.payload.num });
+      let _action = action as Update;
+      console.log(_action);
+      return Object.assign({}, state, { num: _action.payload.num });
 
     default:
       return state;

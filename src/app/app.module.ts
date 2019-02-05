@@ -7,20 +7,23 @@ import { AppComponent } from './app.component';
 import { AppEffects } from './app.effects';
 import { CounterComponent } from './counter/counter.component';
 import { counterReducer } from './counter/state/counter.reducer';
+import { clockReducer } from './clock/state/clock.reducer';
 import { ListenerComponent } from './listener/listener.component';
 import { FormsModule } from '@angular/forms';
+import { ClockComponent } from './clock/clock.component';
 
 
 @NgModule({
   declarations: [
     AppComponent,
     CounterComponent,
-    ListenerComponent
+    ListenerComponent,
+    ClockComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    StoreModule.forRoot({ count: counterReducer }),
+    StoreModule.forRoot({ count: counterReducer, clock: clockReducer }),
     EffectsModule.forRoot([AppEffects]),
     FormsModule
   ],

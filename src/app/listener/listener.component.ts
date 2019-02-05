@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 //import { Observable } from 'rxjs';
 import { Store } from '@ngrx/store';
 import { CounterState } from '../counter/state/counter.state';
+import { ClockState } from '../clock/state/clock.state';
 
 @Component({
   selector: 'app-listener',
@@ -12,11 +13,16 @@ export class ListenerComponent implements OnInit {
 
   //count$: Observable<number>;
   count = 0;
+  color = 'black';
 
-  constructor(private store: Store<CounterState>) {
+  constructor(private counterStore: Store<CounterState>, private clockStore: Store<ClockState> ) {
     //this.count$ = store.pipe(select('count'));
-    const storeSubscriberOne = store.select('count').subscribe(state => {
+    counterStore.select('count').subscribe(state => {
       this.count = state.num
+    });
+
+    clockStore.select('clock').subscribe(state => {
+      this.color = state.color;
     });
   }
 
