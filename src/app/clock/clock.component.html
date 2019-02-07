@@ -1,3 +1,3 @@
-<div [ngStyle]="{'color': color}"> {{Clock | date:mask}} </div>
+<div [ngStyle]="{'color': color$ | async }"> {{Clock | date:(mask$ | async)}} </div>
 <div>Set Color: <input [(ngModel)]="colorValue"><button (click)="updateColor(colorValue)">Go!</button></div>
 <div>Set Mask: <input [(ngModel)]="maskValue"><button (click)="updateMask(maskValue)">Go!</button></div>

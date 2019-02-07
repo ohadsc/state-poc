@@ -1,4 +1,5 @@
 
+import { createFeatureSelector, createSelector } from '@ngrx/store';
 export interface ClockState {
   color: string;
   mask: string;
@@ -6,5 +7,10 @@ export interface ClockState {
 
 export const initialClockState: ClockState = {
   color: 'black',
-  mask: 'HH:mm:ss'
+  mask: 'hh:mm:ss'
 };
+
+export const selectClockState = createFeatureSelector<ClockState>('clock');
+export const getColor = createSelector(selectClockState, state => state.color);
+export const getMask = createSelector(selectClockState, state => state.mask);
+

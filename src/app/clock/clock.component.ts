@@ -1,7 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Store } from '@ngrx/store';
-import { ClockState } from './state/clock.state';
+import { ClockState, getMask, getColor } from './state/clock.state';
 import { UpdateColor, UpdateMask } from './state/clock.actions';
+import { Observable, Subject } from 'rxjs';
+import { takeUntil } from 'rxjs/internal/operators';
 
 @Component({
   selector: 'app-clock',
@@ -10,16 +12,26 @@ import { UpdateColor, UpdateMask } from './state/clock.actions';
 })
 export class ClockComponent implements OnInit {
 
+  //private ngUnsubscribe: Subject<void> = new Subject<void>();
+
   constructor(private store: Store<ClockState>) {
-    const storeSubscriber = store.select('clock').subscribe(state => {
-      this.mask = state.mask;
-      this.color = state.color;
-    });
+    // store.select(
+    //   getMask
+    // ).pipe(takeUntil(this.ngUnsubscribe)).subscribe(mask => {
+    //   this.mask = mask;
+    // });
+    this.mask$ = store.select(
+      getMask
+    );
+
+    this.color$ = store.select(
+      getColor
+    );
   }
 
-  mask = 'HH:mm:ss';
-  color = 'black';
-  timerId = null;
+  //mask: string
+  mask$: Observable<string>
+  color$: Observable<string>
   Clock = Date.now();
 
   ngOnInit() {
@@ -27,7 +39,7 @@ export class ClockComponent implements OnInit {
   }
 
   initClock() {
-    this.timerId = setInterval(() => {
+    setInterval(() => {
       this.Clock = Date.now();
     }, 1000);
   }
@@ -40,5 +52,9 @@ export class ClockComponent implements OnInit {
     this.store.dispatch(new UpdateMask({ mask: value }));
   }
 
+  // ngOnDestroy() {
+  //   this.ngUnsubscribe.next();
+  //   this.ngUnsubscribe.complete();
+  // }
 
 }

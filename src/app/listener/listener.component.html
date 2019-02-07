@@ -1,1 +1,1 @@
-<div [ngStyle]="{'color': color}">Current Listener Count: {{ count }}</div>
+<div [ngStyle]="{'color': color$ | async }">Current Listener Count: {{ count$ | async }}</div>
