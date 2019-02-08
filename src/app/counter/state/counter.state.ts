@@ -1,5 +1,5 @@
 
-import { MemoizedSelector, createFeatureSelector, createSelector } from '@ngrx/store';
+import { createFeatureSelector, createSelector } from '@ngrx/store';
 
 export interface CounterState {
   num: number;
@@ -11,3 +11,8 @@ export const initialCounterState: CounterState = {
 
 export const selectCounterState = createFeatureSelector<CounterState>('count');
 export const getCounter = createSelector(selectCounterState, state => state.num);
+
+export const getCounterX2 = createSelector(
+  getCounter,
+  (counter, props) => counter * props.multiply
+);

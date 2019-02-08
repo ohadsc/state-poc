@@ -11,7 +11,19 @@ import { clockReducer } from './clock/state/clock.reducer';
 import { ListenerComponent } from './listener/listener.component';
 import { FormsModule } from '@angular/forms';
 import { ClockComponent } from './clock/clock.component';
+import { StoreModule, ActionReducer, MetaReducer } from '@ngrx/store';
 
+
+// console.log all actions
+export function debug(reducer: ActionReducer<any>): ActionReducer<any> {
+  return function(state, action) {
+    console.log('state', state);
+    console.log('action', action);
+    return reducer(state, action);
+  };
+}
+
+export const metaReducers: MetaReducer<any>[] = [debug];
 
 @NgModule({
   declarations: [
@@ -23,7 +35,7 @@ import { ClockComponent } from './clock/clock.component';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    StoreModule.forRoot({ count: counterReducer, clock: clockReducer }),
+    StoreModule.forRoot({ count: counterReducer, clock: clockReducer },  { metaReducers }),
     EffectsModule.forRoot([AppEffects]),
     FormsModule
   ],

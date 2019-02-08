@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Store, select, StoreModule } from '@ngrx/store';
 //import { Observable } from 'rxjs';
 import { Increment, Decrement, Reset, Update } from './state/counter.actions';
-import { CounterState, getCounter } from './state/counter.state';
+import { CounterState, getCounter, getCounterX2 } from './state/counter.state';
 import { createSelector, createFeatureSelector } from '@ngrx/store';
 import { Observable } from 'rxjs';
 
@@ -21,7 +21,7 @@ export class CounterComponent implements OnInit {
 
   constructor(private store: Store<CounterState>) {
     this.count$ = this.store.select(
-      getCounter
+      getCounterX2, { multiply: 2 }
     );
   }
 
