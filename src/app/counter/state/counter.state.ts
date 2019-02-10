@@ -12,7 +12,7 @@ export const initialCounterState: CounterState = {
 export const selectCounterState = createFeatureSelector<CounterState>('count');
 export const getCounter = createSelector(selectCounterState, state => state.num);
 
-export const getCounterX2 = createSelector(
+export const getCounterX = createSelector(
   getCounter,
   (counter, props) => counter * props.multiply
 );

@@ -1,11 +1,10 @@
-<button (click)="increment()">Increment</button>
+<div class="counter">
+  <div class="title">Counter</div>
+  <button (click)="increment()">Increment</button>
+  <button (click)="decrement()">Decrement</button>
+  <button (click)="reset()">Reset Counter</button>
+  <div>Current Count: {{ (count$ | async) }}</div>
+  <!--div>Current Count: {{count }}</div-->
+  <div>Set number: <input [(ngModel)]="updateValue" type="number"><button (click)="update(updateValue)">Go!</button></div>
 
-<div>Current Count: {{ (count$ | async) }}</div>
-
-<!--div>Current Count: {{count }}</div-->
-
-
-<button (click)="decrement()">Decrement</button>
-
-<button (click)="reset()">Reset Counter</button>
-<div>Set number: <input [(ngModel)]="updateValue" type="number"><button (click)="update(updateValue)">Go!</button></div>
+</div>

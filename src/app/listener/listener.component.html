@@ -1,1 +1,9 @@
-<div [ngStyle]="{'color': color$ | async }">Current Listener Count: {{ count$ | async }}</div>
+<div [ngStyle]="{'color': color$ | async }" class="listener">
+  <div class="title">Listener</div>
+  <div>Count: {{ count$ | async }}</div>
+  <div>Count X2: {{ countX2$ | async }}</div>
+  <div>Mask: {{ mask$ | async }}</div>
+</div>
+
+
+
