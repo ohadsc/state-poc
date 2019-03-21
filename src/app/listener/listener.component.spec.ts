@@ -1,6 +1,8 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { ListenerComponent } from './listener.component';
+import { StoreModule } from '@ngrx/store';
+import { FormsModule } from '@angular/forms';
 
 describe('ListenerComponent', () => {
   let component: ListenerComponent;
@@ -8,7 +10,13 @@ describe('ListenerComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ ListenerComponent ]
+      imports:[
+        FormsModule,
+        StoreModule.forRoot({})
+      ],
+      declarations: [
+        ListenerComponent
+      ]
     })
     .compileComponents();
   }));

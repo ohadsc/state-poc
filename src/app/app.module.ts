@@ -11,6 +11,8 @@ import { ListenerComponent } from './listener/listener.component';
 import { FormsModule } from '@angular/forms';
 import { ClockComponent } from './clock/clock.component';
 import { StoreModule, ActionReducer, MetaReducer } from '@ngrx/store';
+import { ScrollerComponent } from './scroller/scroller.component';
+import { VirtualScrollerModule } from 'ngx-virtual-scroller';
 
 
 // console.log all actions
@@ -29,14 +31,16 @@ export const metaReducers: MetaReducer<any>[] = [debug];
     AppComponent,
     CounterComponent,
     ListenerComponent,
-    ClockComponent
+    ClockComponent,
+    ScrollerComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     StoreModule.forRoot({ count: counterReducer, clock: clockReducer },  { metaReducers }),
     EffectsModule.forRoot([AppEffects]),
-    FormsModule
+    FormsModule,
+    VirtualScrollerModule
   ],
   providers: [],
   bootstrap: [AppComponent]

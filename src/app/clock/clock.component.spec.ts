@@ -1,6 +1,8 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { ClockComponent } from './clock.component';
+import { FormsModule } from '@angular/forms';
+import { StoreModule } from '@ngrx/store';
 
 describe('ClockComponent', () => {
   let component: ClockComponent;
@@ -8,7 +10,13 @@ describe('ClockComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ ClockComponent ]
+      imports: [
+        FormsModule,
+        StoreModule.forRoot({})
+      ],
+      declarations: [
+        ClockComponent,
+      ]
     })
     .compileComponents();
   }));

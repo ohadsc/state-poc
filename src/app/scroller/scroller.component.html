@@ -1,0 +1,5 @@
+<virtual-scroller #scroll [items]="buffer" (vsUpdate)="scrollItems = $event" (vsEnd)="fetchMore($event)">
+  <div *ngFor="let item of scrollItems">
+    {{item.title}}. {{item.description}}  {{item.title2}}. {{item.description2}}  {{item.title3}}. {{item.description3}}
+  </div>
+</virtual-scroller>

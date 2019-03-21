@@ -1,15 +1,30 @@
 import { TestBed, async } from '@angular/core/testing';
 import { RouterTestingModule } from '@angular/router/testing';
 import { AppComponent } from './app.component';
+import { CounterComponent } from './counter/counter.component';
+import { ListenerComponent } from './listener/listener.component';
+import { ClockComponent } from './clock/clock.component';
+import { ScrollerComponent } from './scroller/scroller.component';
+import { FormsModule } from '@angular/forms';
+import { VirtualScrollerComponent } from 'ngx-virtual-scroller';
+import { StoreModule  } from '@ngrx/store';
 
 describe('AppComponent', () => {
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       imports: [
-        RouterTestingModule
+        RouterTestingModule,
+        FormsModule,
+        StoreModule.forRoot({})
+
       ],
       declarations: [
-        AppComponent
+        AppComponent,
+        CounterComponent,
+        ListenerComponent,
+        ClockComponent,
+        ScrollerComponent,
+        VirtualScrollerComponent
       ],
     }).compileComponents();
   }));
