@@ -4,15 +4,21 @@
 const { SpecReporter } = require('jasmine-spec-reporter');
 
 exports.config = {
+  useAllAngular2AppRoots: true,
   allScriptsTimeout: 11000,
   specs: [
     './src/**/*.e2e-spec.ts'
   ],
   capabilities: {
-    'browserName': 'chrome'
+    'browserName': 'chrome',
+      chromeOptions: {
+        binary: process.env.CHROME_BIN,
+        args: ['--headless', '--no-sandbox']
+      }
   },
   directConnect: true,
   baseUrl: 'http://localhost:4200/',
+  elementExplorer: true,
   framework: 'jasmine',
   jasmineNodeOpts: {
     showColors: true,
